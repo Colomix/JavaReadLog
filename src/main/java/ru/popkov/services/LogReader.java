@@ -1,4 +1,4 @@
-package ru.main.JavaReadLog;
+package ru.popkov.services;
 
 import com.jcabi.ssh.SSHByPassword;
 import com.jcabi.ssh.Shell;

@@ -1,4 +1,4 @@
-package ru.main.JavaReadLog;
+package ru.popkov.services;
 
 import ru.yandex.qatools.properties.PropertyLoader;
 import ru.yandex.qatools.properties.annotations.Property;
