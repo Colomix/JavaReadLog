@@ -4,6 +4,7 @@ import com.jcabi.ssh.SSHByPassword;
 import com.jcabi.ssh.Shell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 
 @Service
@@ -20,7 +21,7 @@ public class LogReader implements ILogReader {
         Shell sshByPassword = new SSHByPassword(sshConnectionConfig.getServer(), sshConnectionConfig.getPort(),
                 sshConnectionConfig.getLogin(), sshConnectionConfig.getPassword());
 
-        String command = String.format("head -n %1$d %2$s", sshConnectionConfig.getLineCount(),
+        String command = String.format("tail -n %1$d %2$s", sshConnectionConfig.getLineCount(),
                 sshConnectionConfig.getFilePath());
 
         return new Shell.Plain(sshByPassword).exec(command);

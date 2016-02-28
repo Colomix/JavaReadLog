@@ -61,7 +61,7 @@ public class LogReaderTest {
         LogReader logReader = new LogReader(sshConnectionConfig);
 
         Assert.assertEquals("Unknown command: Content file\n", logReader.read());
-        Assert.assertEquals("head -n 50 1.log", executeCommand[0]);
+        Assert.assertEquals("tail -n 50 1.log", executeCommand[0]);
         Assert.assertEquals("root", authentication[0]);
         Assert.assertEquals("admin", authentication[1]);
     }
