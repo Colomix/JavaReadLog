@@ -1,5 +1,6 @@
 package ru.popkov.controllers;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,12 @@ import java.util.Locale;
 public class HomeController {
 
     private final ILogReader logReader;
+    private final Logger logger;
 
     @Autowired
-    public HomeController(ILogReader logReader) {
+    public HomeController(ILogReader logReader, Logger logger) {
         this.logReader = logReader;
+        this.logger = logger;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -31,6 +34,7 @@ public class HomeController {
             log = logReader.read();
         } catch (Exception e) {
             log = "Не удалось прочитать лог.";
+            logger.error("Unable to read file. Exception: ", e);
         }
 
         model.addAttribute("logs", log);
