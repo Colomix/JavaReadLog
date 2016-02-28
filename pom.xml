@@ -83,6 +83,7 @@
                 <configuration>
                     <server>tomcat7</server>
                     <url>http://localhost:8080/manager/text</url>
+					<path>/</path>
                 </configuration>
             </plugin>
         </plugins>
