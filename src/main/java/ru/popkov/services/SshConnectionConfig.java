@@ -1,35 +1,36 @@
 package ru.popkov.services;
 
-import ru.yandex.qatools.properties.PropertyLoader;
-import ru.yandex.qatools.properties.annotations.Property;
-import ru.yandex.qatools.properties.annotations.Resource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.stereotype.Service;
 
-/**
- * Created by Олег on 24.02.2016.
- */
-@Resource.Classpath("SshConnection.properties")
+@Service
+@PropertySource("classpath:connection.properties")
 public class SshConnectionConfig implements ISshConnectionConfig {
 
-    @Property("server")
+    @Value("${ssh.server}")
     private String server;
 
-    @Property("port")
+    @Value("${ssh.port}")
     private int port;
 
-    @Property("login")
+    @Value("${ssh.login}")
     private String login;
 
-    @Property("password")
+    @Value("${ssh.password}")
     private String password;
 
-    @Property("file")
+    @Value("${ssh.file}")
     private String filePath;
 
-    @Property("lines")
+    @Value("${ssh.lines}")
     private int lines;
 
-    public SshConnectionConfig() {
-        PropertyLoader.populate(this); //инициализация полей класса значениями из файла
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
     }
 
     public String getServer() {

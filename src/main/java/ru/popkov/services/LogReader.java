@@ -2,19 +2,18 @@ package ru.popkov.services;
 
 import com.jcabi.ssh.SSHByPassword;
 import com.jcabi.ssh.Shell;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.io.IOException;
 
-/**
- * Created by Олег on 24.02.2016.
- */
+@Service
 public class LogReader implements ILogReader {
 
     private final ISshConnectionConfig sshConnectionConfig;
 
+    @Autowired
     public LogReader(ISshConnectionConfig sshConnectionConfig) {
         this.sshConnectionConfig = sshConnectionConfig;
-
     }
 
     public String read() throws IOException {

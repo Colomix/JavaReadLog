@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Чтение лог-файла</title>
 </head>
 <body>
-$END$
+ ${logs}
 </body>
 </html>
